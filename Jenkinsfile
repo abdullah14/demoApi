@@ -5,7 +5,7 @@ pipeline {
       steps {
         
         sh 'mvn clean install -DskipTests=true '
-        sh 'docker build -t hello_there .'
+        sh 'docker build -t example-api .'
       }
     }
   }
