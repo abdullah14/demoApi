@@ -16,19 +16,20 @@ pipeline {
      steps {       
        sh 'docker build -t abdullahcsjmi/my-petclinic:latest .'
      }
-  }
+  }      
+        stage ('Push image to Artifactory') { // take that image and push to artifactory
+        steps {
+            rtDockerPush(
+                serverId: "jfrog-cred",
+                image: "https://abbdullahcsjmi.jfrog.io/docker-local/my-petclinic:latest",
+                host: 'tcp://localhost:2375',
+                targetRepo: 'docker-local', // where to copy to (from docker-virtual)
+                // Attach custom properties to the published artifacts:
+                properties: 'project-name=docker1;status=stable'
+            )
+        }
+    }
     
-    
-    stage("Push docker image") {
-     steps {
-             sh 'docker -v'
-             script {
-                 def rtServer = Artifactory.server "artifactory"
-                 def rtDocker = Artifactory.docker server: rtServer
-                 def buildInfo = rtDocker.push 'https://abbdullahcsjmi.jfrog.io/docker-local/my-petclinic:latest','jfrog-cred'
-             }
-     }
-}
     
   }
 }
