@@ -8,8 +8,13 @@ pipeline {
     stage("build") {     
       steps {       
         sh 'mvn clean install -DskipTests=true '
-        docker.build("abdullahcsjmi/docker-jenkins-pipeline:${env.BUILD_NUMBER}")
       }
     }
+    
+   stage('Create Docker Image') {
+    dir('target') {
+      docker.build("abdullahcsjmi/docker-jenkins-pipeline:${env.BUILD_NUMBER}")
+    }
+  }
   }
 }
