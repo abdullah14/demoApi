@@ -12,7 +12,9 @@ pipeline {
     }
     
    stage('Create Docker Image') {
+     steps {       
       docker.build("abdullahcsjmi/docker-jenkins-pipeline:${env.BUILD_NUMBER}")
+     }
   }
   }
 }
