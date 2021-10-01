@@ -12,7 +12,7 @@ pipeline {
         stage("Build") {
             steps {
                 
-                dockerImage = docker.build demoapi
+                 sh 'mvn clean install -DskipTests=true '
                 
             }
         }
