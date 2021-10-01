@@ -21,14 +21,12 @@ pipeline {
     
     stage("Push docker image") {
      steps {
-         container('docker') {
              sh 'docker -v'
              script {
                  def rtServer = Artifactory.server "artifactory"
                  def rtDocker = Artifactory.docker server: rtServer
                  def buildInfo = rtDocker.push 'https://abbdullahcsjmi.jfrog.io/docker-local/my-petclinic:latest','jfrog-cred'
              }
-         }
      }
 }
     
