@@ -3,9 +3,9 @@ pipeline {
   stages {
     stage("build") {
       steps {
-        sh """
-          docker build -t hello_there .
-        """
+        
+        sh 'mvn clean install -DskipTests=true '
+        sh 'docker build -t hello_there .'
       }
     }
     stage("run") {
