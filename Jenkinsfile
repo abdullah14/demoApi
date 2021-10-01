@@ -13,7 +13,7 @@ pipeline {
     
    stage('Create Docker Image') {
      steps {       
-      docker.build("abdullahcsjmi/docker-jenkins-pipeline:${env.BUILD_NUMBER}")
+       sh 'docker build -t abdullahcsjmi/my-petclinic:latest .'
      }
   }
   }
