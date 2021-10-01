@@ -1,12 +1,11 @@
 pipeline {
   environment {
     registry = "abdullahcsjmi/demoapi2"
-    registryCredential = 'd9264b5e-e81a-4cec-969e-2cfa02a3caaf'
+    registryCredential = 'docker-cred'
   }
   agent { label "master" }
   stages {
-    stage("build") {
-      
+    stage("build") {     
       steps {       
         sh 'mvn clean install -DskipTests=true '
         sh 'docker build -t example-api .'
