@@ -1,9 +1,9 @@
 pipeline {
+  agent { label "master" }
   environment {
     registry = "abdullahcsjmi/demoapi2"
     registryCredential = 'docker-cred'
   }
-  agent { label "master" }
   stages {
     stage("build") {     
       steps {       
