@@ -16,7 +16,15 @@ pipeline {
                 
             }
         }
-    }
+        
+       stage ('docker image build'){
+            steps {
+                   
+                        sh 'mvn dockerfile:build'
+                         
+                  }
+          }
+    }        
 
     post {
         always {
