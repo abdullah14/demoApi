@@ -12,9 +12,7 @@ pipeline {
     }
     
    stage('Create Docker Image') {
-    dir('target') {
       docker.build("abdullahcsjmi/docker-jenkins-pipeline:${env.BUILD_NUMBER}")
-    }
   }
   }
 }
