@@ -8,7 +8,7 @@ pipeline {
     stage("build") {     
       steps {       
         sh 'mvn clean install -DskipTests=true '
-        def customImage = docker.build("my-image")
+        docker.build("abdullahcsjmi/docker-jenkins-pipeline:${env.BUILD_NUMBER}")
       }
     }
   }
