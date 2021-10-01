@@ -3,7 +3,7 @@
 pipeline {
 
     agent {
-        dockerFile {
+        dockerfile {
             label "master"
         }
     }
