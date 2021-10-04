@@ -19,8 +19,9 @@ pipeline {
   }      
         stage ('Push image to Artifactory') { // take that image and push to artifactory
         steps {
-          
-          sh 'docker push https://abbdullahcsjmi.jfrog.io/artifactory/docker-local/my-petclinic:latest'
+          withDockerRegistry([ credentialsId: "jfrog-cred", url: "" ]) {
+           // following commands will be executed within logged docker registry
+           sh 'docker push https://abbdullahcsjmi.jfrog.io/artifactory/docker-local/my-petclinic:latest'
           
         }
     }
