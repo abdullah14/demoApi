@@ -21,6 +21,9 @@ pipeline {
         steps {
           script {
               def server = Artifactory.newServer url: 'https://abbdullahcsjmi.jfrog.io/', credentialsId: 'jfrog-cred'
+             def rtDocker = Artifactory.docker server: server
+            def buildInfo = rtDocker.push 'https://abbdullahcsjmi.jfrog.io/my-petclinic:latest', 'docker-local'
+            server.publishBuildInfo buildInfo
               println "jfrog cred... "+server.credentialsId
           }
           
