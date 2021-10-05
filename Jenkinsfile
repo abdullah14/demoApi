@@ -22,7 +22,7 @@ pipeline {
           script {
               def server = Artifactory.newServer url: 'https://abbdullahcsjmi.jfrog.io/artifactory', username: 'abdullahcsjmi@gmail.com', password: 'Altamash876@'
              def rtDocker = Artifactory.docker server: server
-            def buildInfo = rtDocker.push 'hello-world:latest', 'docker-local'
+            def buildInfo = rtDocker.push 'docker-local/hello-world:latest', 'docker-local'
             server.publishBuildInfo buildInfo
               println "jfrog cred... "+server.credentialsId
           }
