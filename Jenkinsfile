@@ -19,9 +19,10 @@ pipeline {
   }      
         stage ('Push image to Artifactory') { // take that image and push to artifactory
         steps {
-          withDockerRegistry([ credentialsId: "jfrog-cred", url: "" ]) {
-           // following commands will be executed within logged docker registry
-           sh 'docker push https://abbdullahcsjmi.jfrog.io/artifactory/docker-local/my-petclinic:latest'
+          script {
+              def server = Artifactory.newServer url: 'https://abbdullahcsjmi.jfrog.io/', credentialsId: 'jfrog-cred'
+              println "jfrog cred... "+server.credentialsId
+          }
           
         }
     }
