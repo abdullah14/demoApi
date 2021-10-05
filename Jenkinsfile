@@ -20,7 +20,7 @@ pipeline {
         stage ('Push image to Artifactory') { // take that image and push to artifactory
         steps {
           script {
-              def server = Artifactory.newServer url: 'https://abbdullahcsjmi.jfrog.io/artifactory', credentialsId: "jfrog-cred"
+              def server = Artifactory.newServer url: 'https://abbdullahcsjmi.jfrog.io/artifactory', username: 'abdullahcsjmi@gmail.com', password: 'Altamash876@'
              def rtDocker = Artifactory.docker server: server
             def buildInfo = rtDocker.push 'abdullahcsjmi/my-petclinic:latest', 'docker-local'
             server.publishBuildInfo buildInfo
