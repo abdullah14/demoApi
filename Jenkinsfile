@@ -14,7 +14,7 @@ pipeline {
     
    stage('Create Docker Image') {
      steps {       
-       sh 'docker build -t abdullahcsjmi/demo.api:latest .'
+       sh 'docker build -t demo.api:latest .'
      }
   }      
         stage ('Push image to Artifactory') { // take that image and push to artifactory
